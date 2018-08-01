@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-handheld" version="1.0.0" 
+    xmlns="http://apache.org/cordova/ns/plugins/1.0" 
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>Handheld</name>
+    <js-module name="Handheld" src="www/Handheld.js">
+        <clobbers target="Handheld" />
+    </js-module>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="Handheld">
+                <param name="android-package" value="com.izouma.handheld.Handheld" />
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml">
+            <uses-feature android:name="android.hardware.camera" />
+            <uses-feature android:name="android.hardware.camera.autofocus" />
+            <uses-permission android:name="android.permission.CAMERA" />
+            <uses-permission android:name="android.permission.FLASHLIGHT" />
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+            <uses-permission android:name="android.permission.INTERNET"/>
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+            <uses-permission android:name="android.permission.WAKE_LOCK" />
+            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+            <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+            <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+        </config-file>
+        <config-file parent="/manifest/application" target="AndroidManifest.xml">
+            <activity android:name="com.izouma.handheld.ScanActivity" />
+        </config-file>
+        <source-file src="src/android/handheld" target-dir="src/com/izouma" />
+        <source-file src="src/android/res/layout/activity_scan.xml" target-dir="res/layout" />
+        <source-file src="src/android/res/drawable/ic_flash.xml" target-dir="res/drawable" />
+        <source-file src="src/android/res/drawable-xhdpi/ic_shortcut_flash_off.png" target-dir="res/drawable-xhdpi" />
+        <source-file src="src/android/res/drawable-xhdpi/ic_shortcut_flash_on.png" target-dir="res/drawable-xhdpi" />
+        <source-file src="src/android/res/drawable-xhdpi/prev.png" target-dir="res/drawable-xhdpi" />
+        <source-file src="src/android/res/drawable-xxhdpi/ic_shortcut_flash_off.png" target-dir="res/drawable-xxhdpi" />
+        <source-file src="src/android/res/drawable-xxhdpi/ic_shortcut_flash_on.png" target-dir="res/drawable-xxhdpi" />
+        <source-file src="src/android/res/drawable-xxhdpi/prev.png" target-dir="res/drawable-xxhdpi" />
+        <source-file src="src/android/res/drawable-xxxhdpi/ic_shortcut_flash_off.png" target-dir="res/drawable-xxxhdpi" />
+        <source-file src="src/android/res/drawable-xxxhdpi/ic_shortcut_flash_on.png" target-dir="res/drawable-xxxhdpi" />
+        <source-file src="src/android/res/raw/beep.wav" target-dir="res/raw" />
+        <source-file src="src/android/res/raw/error.wav" target-dir="res/raw" />
+        <source-file src="src/android/res/raw/fail.wav" target-dir="res/raw" />
+        <source-file src="src/android/res/raw/success.wav" target-dir="res/raw" />
+        <source-file src="src/android/res/raw/tag.wav" target-dir="res/raw" />
+        <!--  -->
+        <source-file src="src/android/libs/armeabi/libbarcodereader.so" target-dir="libs/armeabi-v7a" />
+        <source-file src="src/android/libs/armeabi/libbarcodereader43.so" target-dir="libs/armeabi-v7a" />
+        <source-file src="src/android/libs/armeabi/libbarcodereader44_AndroidM.so" target-dir="libs/armeabi-v7a" />
+        <source-file src="src/android/libs/armeabi/libbarcodereader44.so" target-dir="libs/armeabi-v7a" />
+        <source-file src="src/android/libs/armeabi/libIAL.so" target-dir="libs/armeabi-v7a" />
+        <source-file src="src/android/libs/armeabi/libSDL.so" target-dir="libs/armeabi-v7a" />
+        <source-file src="src/android/libs/armeabi/libserial_port.so" target-dir="libs/armeabi-v7a" />
+        <source-file src="src/android/libs/armeabi/libsystem_control.so" target-dir="libs/armeabi-v7a" />
+        <source-file src="src/android/libs/armeabi/libDeviceAPI.so" target-dir="libs/armeabi-v7a" />
+        <source-file src="src/android/libs/armeabi/libModuleAPI_Android.so" target-dir="libs/armeabi-v7a" />
+        <!-- <source-file src="src/android/libs/armeabi-v7a/libserial_port.so" target-dir="libs/armeabi-v7a" /><source-file src="src/android/libs/armeabi-v7a/libsystem_control.so" target-dir="libs/armeabi-v7a" /><source-file src="src/android/libs/arm64-v8a/libbarcodereader44.so" target-dir="libs/arm64-v8a" /><source-file src="src/android/libs/arm64-v8a/libIAL.so" target-dir="libs/arm64-v8a" /><source-file src="src/android/libs/arm64-v8a/libSDL.so" target-dir="libs/arm64-v8a" /> -->
+        <source-file src="src/android/libs/ch.ntb.usb-0.5.9.jar" target-dir="libs"/>
+        <source-file src="src/android/libs/invengo.irp1.jar" target-dir="libs"/>
+        <source-file src="src/android/libs/invengo.system.ctrl.jar" target-dir="libs"/>
+        <source-file src="src/android/libs/invengo.system.device.jar" target-dir="libs"/>
+        <source-file src="src/android/libs/invengo.util.jar" target-dir="libs"/>
+        <source-file src="src/android/libs/classes.jar" target-dir="libs"/>
+        <source-file src="src/android/libs/cw-deviceapi20171113.jar" target-dir="libs"/>
+        <source-file src="src/android/libs/hitownsdk.jar" target-dir="libs"/>
+        <source-file src="src/android/libs/Module_Android_DemoPower_1.6.5.1.jar" target-dir="libs"/>
+        <source-file src="src/android/libs/ModuleAPI_Android_3.0.1.0.jar" target-dir="libs"/>
+        <source-file src="src/android/libs/trinea-android-common.jar" target-dir="libs"/>
+        <source-file src="src/android/libs/UHF_API_JAR.jar" target-dir="libs"/>
+        <source-file src="src/android/libs/xUtils-2.5.5.jar" target-dir="libs"/>
+        <resource-file src="src/android/libs/bga-qrcode-core.aar" target="libs/bga-qrcode-core.aar"/>
+        <resource-file src="src/android/libs/bga-qrcode-zxing.aar" target="libs/bga-qrcode-zxing.aar"/>
+        <!--  -->
+        <framework src="src/android/handheld.gradle" custom="true" type="gradleReference"/>
+    </platform>
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="Handheld">
+                <param name="ios-package" value="Handheld" />
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+        <config-file target="*-Info.plist" parent="NSCameraUsageDescription">
+            <string>需要打开相机来扫码</string>
+        </config-file>
+        <source-file src="src/ios/Handheld.m" />
+        <source-file src="src/ios/ScanViewController.h" />
+        <source-file src="src/ios/ScanViewController.m" />
+        <resource-file src="src/ios/qrCodeScanner.bundle"/>
+    </platform>
+    <dependency id="cordova-plugin-camera" />
+</plugin>

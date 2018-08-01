@@ -1,0 +1,12 @@
+repositories {    
+    jcenter()
+    flatDir {
+        dirs 'libs'
+    }
+}
+dependencies {
+    compile(name:'bga-qrcode-core', ext:'aar')
+    compile(name:'bga-qrcode-zxing', ext:'aar')
+    compile "com.android.support:support-v4:24.1.1+"
+    compile "com.google.code.gson:gson:2.8.2"
+}
