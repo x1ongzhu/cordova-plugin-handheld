@@ -41,3 +41,9 @@ exports.getPicture = function(success, error, cameraOptions) {
         []
     );
 };
+exports.writeTag = function(success, error, tagData) {
+    exec(success, error, "Handheld", "writeTag", [tagData]);
+};
+exports.getInfo = function(success, error) {
+    exec(success, error, "Handheld", "getInfo", []);
+};

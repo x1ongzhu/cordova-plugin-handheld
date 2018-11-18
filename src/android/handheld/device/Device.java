@@ -18,6 +18,15 @@ public abstract class Device {
     public void init() {
     }
 
+    public void onPause() {
+    }
+
+    public void onResume() {
+    }
+
+    public void destroy() {
+    }
+
     public void scanCode(ScanCodeListener listener) {
     }
 
@@ -27,16 +36,10 @@ public abstract class Device {
     public void readTag(ReadTagOptions options, ReadTagListener listener) {
     }
 
+    public void writeTag(String tagData, WriteTagListener listener) {
+    }
+
     public void stopRead() {
-    }
-
-    public void onPause() {
-    }
-
-    public void onResume() {
-    }
-
-    public void destroy() {
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
@@ -50,5 +53,11 @@ public abstract class Device {
         void onReadData(TagData tagData);
 
         void onReadData(List<TagData> list);
+    }
+
+    public interface WriteTagListener {
+        void onWriteSuccess();
+
+        void onWriteFail(String error);
     }
 }

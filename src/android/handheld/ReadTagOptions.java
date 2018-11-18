@@ -2,6 +2,7 @@ package com.izouma.handheld;
 
 public class ReadTagOptions {
     private boolean single;
+    private boolean silent;
     private Integer power;
 
     public boolean isSingle() {
@@ -18,5 +19,13 @@ public class ReadTagOptions {
 
     public void setPower(Integer power) {
         this.power = power;
+    }
+
+    public boolean isSilent() {
+        return silent;
+    }
+
+    public void setSilent(boolean silent) {
+        this.silent = silent;
     }
 }

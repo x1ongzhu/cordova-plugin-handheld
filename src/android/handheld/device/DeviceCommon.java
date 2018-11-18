@@ -32,7 +32,7 @@ public class DeviceCommon extends Device {
     @Override
     public void scanCode(ScanCodeListener listener) {
         if (ContextCompat.checkSelfPermission(cordovaPlugin.cordova.getActivity(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            cordovaPlugin.requestPermissions(0);
+            cordovaPlugin.requestPermissions(1);
         } else {
             this.listener = listener;
             Intent intent = new Intent(cordovaPlugin.cordova.getActivity(), ScanActivity.class);

@@ -33,7 +33,6 @@ import java.util.List;
 import static com.uhf.uhf.Common.Comm.lsTagList;
 import static com.uhf.uhf.Common.Comm.operateType.nullOperate;
 import static com.uhf.uhf.Common.Comm.soundPool;
-import static com.uhf.uhf.Common.Comm.tag;
 
 /**
  * Created by xiongzhu on 2018/3/20.
@@ -46,12 +45,14 @@ public class DeviceSupoin extends Device {
     private Context           context;
     private ScanCodeListener  scanCodeListener;
     private ReadTagListener   readTagListener;
+    private WriteTagListener  writeTagListener;
     private BroadcastReceiver receiver;
     private AlertDialog       dialog;
     private VoiceManager      mVoiceManager;
     private boolean           singleMode;
+    private boolean           silent;
     private int               soundId;
-    private boolean handleResult = false;
+    private boolean           handleResult = false;
 
     @SuppressLint("HandlerLeak")
     private Handler connectH = new Handler() {
@@ -108,7 +109,9 @@ public class DeviceSupoin extends Device {
         @SuppressWarnings({"unchecked", "unused"})
         @Override
         public void handleMessage(Message msg) {
-            playBeep();
+            if (!silent) {
+                playBeep();
+            }
             try {
                 Bundle b = msg.getData();
                 switch (Comm.opeT) {
@@ -128,8 +131,10 @@ public class DeviceSupoin extends Device {
                         if (isWriteSucceed) {
                             Toast.makeText(context, "Write Succeed", Toast.LENGTH_SHORT).show();
                             Log.d("UHF", "Write Succeed");
+                            writeTagListener.onWriteSuccess();
                         } else {
                             Toast.makeText(context, "Write Fail", Toast.LENGTH_SHORT).show();
+                            writeTagListener.onWriteFail("Write Fail");
                         }
                         break;
                     case writeepcOpe:
@@ -186,47 +191,6 @@ public class DeviceSupoin extends Device {
     }
 
     @Override
-    public void scanCode(ScanCodeListener listener) {
-        this.scanCodeListener = listener;
-        handleResult = true;
-        dialog = new AlertDialog.Builder(context, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT)
-                .setCancelable(false)
-                .setMessage("请按住扫描按钮，将激光对准 二维码/条形码 进行扫描")
-                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        stopScan();
-                    }
-                }).show();
-    }
-
-    @Override
-    public void stopScan() {
-        handleResult = false;
-        if (dialog != null) {
-            dialog.dismiss();
-        }
-    }
-
-    @Override
-    public void readTag(ReadTagOptions options, ReadTagListener listener) {
-        this.readTagListener = listener;
-        this.singleMode = options.isSingle();
-        if (singleMode) {
-            Comm.opeT = Comm.operateType.readOpe;
-            Comm.readTag(0, 1, "6", "2", 0);
-        } else {
-            Comm.startScan();
-        }
-    }
-
-    @Override
-    public void stopRead() {
-        Comm.stopScan();
-    }
-
-    @Override
     public void onResume() {
         super.onResume();
         Comm.repeatSound = true;
@@ -272,6 +236,55 @@ public class DeviceSupoin extends Device {
     public void destroy() {
         context.unregisterReceiver(receiver);
         stopScan();
+    }
+
+    @Override
+    public void scanCode(ScanCodeListener listener) {
+        this.scanCodeListener = listener;
+        handleResult = true;
+        dialog = new AlertDialog.Builder(context, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT)
+                .setCancelable(false)
+                .setMessage("请按住扫描按钮，将激光对准 二维码/条形码 进行扫描")
+                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        stopScan();
+                    }
+                }).show();
+    }
+
+    @Override
+    public void stopScan() {
+        handleResult = false;
+        if (dialog != null) {
+            dialog.dismiss();
+        }
+    }
+
+    @Override
+    public void readTag(ReadTagOptions options, ReadTagListener listener) {
+        this.readTagListener = listener;
+        this.singleMode = options.isSingle();
+        this.silent = options.isSilent();
+        if (singleMode) {
+            Comm.opeT = Comm.operateType.readOpe;
+            Comm.readTag(0, 1, "6", "2", 0);
+        } else {
+            Comm.startScan();
+        }
+    }
+
+    @Override
+    public void stopRead() {
+        Comm.stopScan();
+    }
+
+    @Override
+    public void writeTag(String tagData, WriteTagListener listener) {
+        this.writeTagListener = listener;
+        Comm.opeT = Comm.operateType.writeOpe;
+        Comm.writeTag(0, 1, "6", "2", 0, tagData);
     }
 
     private void playBeep() {

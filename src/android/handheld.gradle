@@ -1,12 +1,24 @@
 repositories {    
-    jcenter()
     flatDir {
-        dirs 'libs'
+        dirs 'src/main/libs'
     }
 }
 dependencies {
-    compile(name:'bga-qrcode-core', ext:'aar')
-    compile(name:'bga-qrcode-zxing', ext:'aar')
-    compile "com.android.support:support-v4:24.1.1+"
-    compile "com.google.code.gson:gson:2.8.2"
+    implementation(name:'bga-qrcode-core', ext:'aar')
+    implementation(name:'bga-qrcode-zxing', ext:'aar')
+    implementation files('src/main/libs/ch.ntb.usb-0.5.9.jar')
+    implementation files('src/main/libs/invengo.irp1.jar')
+    implementation files('src/main/libs/invengo.system.ctrl.jar')
+    implementation files('src/main/libs/invengo.system.device.jar')
+    implementation files('src/main/libs/invengo.util.jar')
+    implementation files('src/main/libs/classes.jar')
+    implementation files('src/main/libs/cw-deviceapi20171113.jar')
+    implementation files('src/main/libs/hitownsdk.jar')
+    implementation files('src/main/libs/Module_Android_DemoPower_1.6.5.1.jar')
+    implementation files('src/main/libs/ModuleAPI_Android_3.0.1.0.jar')
+    implementation files('src/main/libs/trinea-android-common.jar')
+    implementation files('src/main/libs/UHF_API_JAR.jar')
+    implementation files('src/main/libs/xUtils-2.5.5.jar')
+    implementation "com.android.support:support-v4:24.1.1+"
+    implementation "com.google.code.gson:gson:2.8.2"
 }

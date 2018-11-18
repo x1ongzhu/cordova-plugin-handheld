@@ -18,19 +18,20 @@
             <uses-feature android:name="android.hardware.camera.autofocus" />
             <uses-permission android:name="android.permission.CAMERA" />
             <uses-permission android:name="android.permission.FLASHLIGHT" />
-            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
             <uses-permission android:name="android.permission.INTERNET"/>
             <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
             <uses-permission android:name="android.permission.WAKE_LOCK" />
             <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
             <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
             <uses-permission android:name="android.permission.WRITE_SETTINGS" />
             <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
         </config-file>
         <config-file parent="/manifest/application" target="AndroidManifest.xml">
             <activity android:name="com.izouma.handheld.ScanActivity" />
         </config-file>
-        <source-file src="src/android/handheld" target-dir="src/com/izouma" />
+        <source-file src="src/android/handheld" target-dir="java/com/izouma" />
         <source-file src="src/android/res/layout/activity_scan.xml" target-dir="res/layout" />
         <source-file src="src/android/res/drawable/ic_flash.xml" target-dir="res/drawable" />
         <source-file src="src/android/res/drawable-xhdpi/ic_shortcut_flash_off.png" target-dir="res/drawable-xhdpi" />
@@ -47,16 +48,16 @@
         <source-file src="src/android/res/raw/success.wav" target-dir="res/raw" />
         <source-file src="src/android/res/raw/tag.wav" target-dir="res/raw" />
         <!--  -->
-        <source-file src="src/android/libs/armeabi/libbarcodereader.so" target-dir="libs/armeabi-v7a" />
-        <source-file src="src/android/libs/armeabi/libbarcodereader43.so" target-dir="libs/armeabi-v7a" />
-        <source-file src="src/android/libs/armeabi/libbarcodereader44_AndroidM.so" target-dir="libs/armeabi-v7a" />
-        <source-file src="src/android/libs/armeabi/libbarcodereader44.so" target-dir="libs/armeabi-v7a" />
-        <source-file src="src/android/libs/armeabi/libIAL.so" target-dir="libs/armeabi-v7a" />
-        <source-file src="src/android/libs/armeabi/libSDL.so" target-dir="libs/armeabi-v7a" />
-        <source-file src="src/android/libs/armeabi/libserial_port.so" target-dir="libs/armeabi-v7a" />
-        <source-file src="src/android/libs/armeabi/libsystem_control.so" target-dir="libs/armeabi-v7a" />
-        <source-file src="src/android/libs/armeabi/libDeviceAPI.so" target-dir="libs/armeabi-v7a" />
-        <source-file src="src/android/libs/armeabi/libModuleAPI_Android.so" target-dir="libs/armeabi-v7a" />
+        <source-file src="src/android/libs/armeabi/libbarcodereader.so" target-dir="jniLibs/armeabi-v7a" />
+        <source-file src="src/android/libs/armeabi/libbarcodereader43.so" target-dir="jniLibs/armeabi-v7a" />
+        <source-file src="src/android/libs/armeabi/libbarcodereader44_AndroidM.so" target-dir="jniLibs/armeabi-v7a" />
+        <source-file src="src/android/libs/armeabi/libbarcodereader44.so" target-dir="jniLibs/armeabi-v7a" />
+        <source-file src="src/android/libs/armeabi/libIAL.so" target-dir="jniLibs/armeabi-v7a" />
+        <source-file src="src/android/libs/armeabi/libSDL.so" target-dir="jniLibs/armeabi-v7a" />
+        <source-file src="src/android/libs/armeabi/libserial_port.so" target-dir="jniLibs/armeabi-v7a" />
+        <source-file src="src/android/libs/armeabi/libsystem_control.so" target-dir="jniLibs/armeabi-v7a" />
+        <source-file src="src/android/libs/armeabi/libDeviceAPI.so" target-dir="jniLibs/armeabi-v7a" />
+        <source-file src="src/android/libs/armeabi/libModuleAPI_Android.so" target-dir="jniLibs/armeabi-v7a" />
         <!-- <source-file src="src/android/libs/armeabi-v7a/libserial_port.so" target-dir="libs/armeabi-v7a" /><source-file src="src/android/libs/armeabi-v7a/libsystem_control.so" target-dir="libs/armeabi-v7a" /><source-file src="src/android/libs/arm64-v8a/libbarcodereader44.so" target-dir="libs/arm64-v8a" /><source-file src="src/android/libs/arm64-v8a/libIAL.so" target-dir="libs/arm64-v8a" /><source-file src="src/android/libs/arm64-v8a/libSDL.so" target-dir="libs/arm64-v8a" /> -->
         <source-file src="src/android/libs/ch.ntb.usb-0.5.9.jar" target-dir="libs"/>
         <source-file src="src/android/libs/invengo.irp1.jar" target-dir="libs"/>

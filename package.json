@@ -7,7 +7,9 @@
         "type": "git",
         "url": "git+https://github.com/x1ongzhu/cordova-plugin-handheld.git"
     },
-    "keywords": ["cordova"],
+    "keywords": [
+        "cordova"
+    ],
     "author": "x1ongzhu",
     "license": "ISC",
     "bugs": {
@@ -16,6 +18,9 @@
     "homepage": "https://github.com/x1ongzhu/cordova-plugin-handheld#readme",
     "cordova": {
         "id": "cordova-plugin-handheld",
-        "platforms": ["android", "ios"]
+        "platforms": [
+            "android",
+            "ios"
+        ]
     }
 }
