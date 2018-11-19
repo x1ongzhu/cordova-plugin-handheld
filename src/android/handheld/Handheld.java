@@ -13,6 +13,8 @@ import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
 import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.View;
 
 import com.google.gson.Gson;
 import com.izouma.handheld.device.Device;
@@ -51,7 +53,9 @@ public class Handheld extends CordovaPlugin {
         super.initialize(cordova, webView);
         device = DeviceFactory.getDevice(this);
         device.init();
-        requestPermissions(0);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(0);
+        }
     }
 
     @Override
