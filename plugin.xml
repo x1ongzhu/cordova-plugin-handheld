@@ -72,8 +72,8 @@
         <source-file src="src/android/libs/trinea-android-common.jar" target-dir="libs"/>
         <source-file src="src/android/libs/UHF_API_JAR.jar" target-dir="libs"/>
         <source-file src="src/android/libs/xUtils-2.5.5.jar" target-dir="libs"/>
-        <resource-file src="src/android/libs/bga-qrcode-core.aar" target-dir="libs"/>
-        <resource-file src="src/android/libs/bga-qrcode-zxing.aar" target-dir="libs"/>
+        <source-file src="src/android/libs/bga-qrcode-core.aar" target-dir="libs"/>
+        <source-file src="src/android/libs/bga-qrcode-zxing.aar" target-dir="libs"/>
         <!--  -->
         <framework src="src/android/handheld.gradle" custom="true" type="gradleReference"/>
     </platform>
