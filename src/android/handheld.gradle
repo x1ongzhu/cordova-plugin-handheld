@@ -1,11 +1,11 @@
 repositories {    
     flatDir {
-        dirs 'libs'
+        dirs 'src/main/libs'
     }
 }
 dependencies {
-    implementation files('src/main/libs/bga-qrcode-core.aar')
-    implementation files('src/main/libs/bga-qrcode-zxing.aar')
+    implementation files(name:'bga-qrcode-core', ext:'aar')
+    implementation files(name:'bga-qrcode-zxing', ext:'aar')
     implementation files('libs/ch.ntb.usb-0.5.9.jar')
     implementation files('libs/invengo.irp1.jar')
     implementation files('libs/invengo.system.ctrl.jar')
