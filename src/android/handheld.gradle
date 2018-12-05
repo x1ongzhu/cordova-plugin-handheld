@@ -6,19 +6,6 @@ repositories {
 dependencies {
     implementation (name:'bga-qrcode-core', ext:'aar')
     implementation (name:'bga-qrcode-zxing', ext:'aar')
-    implementation files('libs/ch.ntb.usb-0.5.9.jar')
-    implementation files('libs/invengo.irp1.jar')
-    implementation files('libs/invengo.system.ctrl.jar')
-    implementation files('libs/invengo.system.device.jar')
-    implementation files('libs/invengo.util.jar')
-    implementation files('libs/classes.jar')
-    implementation files('libs/cw-deviceapi20171113.jar')
-    implementation files('libs/hitownsdk.jar')
-    implementation files('libs/Module_Android_DemoPower_1.6.5.1.jar')
-    implementation files('libs/ModuleAPI_Android_3.0.1.0.jar')
-    implementation files('libs/trinea-android-common.jar')
-    implementation files('libs/UHF_API_JAR.jar')
-    implementation files('libs/xUtils-2.5.5.jar')
     implementation "com.android.support:support-v4:24.1.1+"
     implementation "com.google.code.gson:gson:2.8.2"
 }
